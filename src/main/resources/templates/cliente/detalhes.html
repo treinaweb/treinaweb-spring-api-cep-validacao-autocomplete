@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout (~{::title}, ~{::main}, _, _)}">
+<head>
+  <title>Detalhes do Cliente</title>
+</head>
+<body>
+  <main>
+    <div class="row">
+      <div class="col">
+        <h1 th:include="~{::title}">Teste</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h4>Dados Pessoais</h4>
+        <p><strong>Nome:</strong> <span th:text="${cliente.nome}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${cliente.email}"></span></p>
+
+        <h4>Endereço</h4>
+        <p><strong>CEP:</strong> <span th:text="${cliente.cep}"></span></p>
+        <p><strong>Logradouro:</strong> <span th:text="${cliente.logradouro}"></span></p>
+        <p><strong>Bairro:</strong> <span th:text="${cliente.bairro}"></span></p>
+        <p><strong>Cidade:</strong> <span th:text="${cliente.cidade}"></span></p>
+        <p><strong>Estado:</strong> <span th:text="${cliente.estado}"></span></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

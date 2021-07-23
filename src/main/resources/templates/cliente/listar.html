@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout (~{::title}, ~{::main}, _, _)}">
+<head>
+  <title>Lista de Clientes</title>
+</head>
+<body>
+  <main>
+    <div class="row">
+      <div class="col">
+        <h1 th:include="~{::title}">Teste</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">CEP</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="cliente : ${clientes}">
+              <th scope="row" th:text="${cliente.id}">1</th>
+              <td th:text="${cliente.nome}">Mark</td>
+              <td th:text="${cliente.email}">Otto</td>
+              <td th:text="${cliente.cep}">@mdo</td>
+              <td>
+                <a th:href="@{/clientes/{id}/detalhes (id=${cliente.id})}" class="btn btn-sm btn-info">Detalhes</a>
+                <a th:href="@{/clientes/{id}/editar (id=${cliente.id})}" class="btn btn-sm btn-primary">Editar</a>
+                <a th:href="@{/clientes/{id}/excluir (id=${cliente.id})}" onclick="return confirm('Tem certeza que deseja excluir esse cliente?');" class="btn btn-sm btn-danger">Excluir</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <a th:href="@{/clientes/cadastrar}" class="btn btn-success">Cadastrar</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
