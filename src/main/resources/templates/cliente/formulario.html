@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="~{base :: layout (~{::title}, ~{::main}, _, _)}">
+<html th:replace="~{base :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
 <head>
   <title>
     [[${cliente.id == null ? 'Cadastrar' : 'Editar'}]] Cliente
@@ -105,5 +105,9 @@
       </div>
     </form>
   </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/js/cep-api.js}"></script>
+  </th:block>
 </body>
 </html>
