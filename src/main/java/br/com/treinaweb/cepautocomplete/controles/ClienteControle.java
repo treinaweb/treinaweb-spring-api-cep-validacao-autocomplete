@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.treinaweb.cepautocomplete.entidades.Cliente;
+import br.com.treinaweb.cepautocomplete.servicos.CepServico;
 import br.com.treinaweb.cepautocomplete.servicos.ClienteServico;
 
 @Controller
@@ -21,6 +22,9 @@ public class ClienteControle {
 
     @Autowired
     private ClienteServico clienteServico;
+
+    @Autowired
+    private CepServico cepServico;
 
     @GetMapping
     public ModelAndView listar() {
@@ -45,6 +49,8 @@ public class ClienteControle {
         if (resultado.hasErrors()) {
             return "cliente/formulario.html";
         }
+
+        System.out.println(cepServico.consultar(cliente.getCep()));
 
         clienteServico.cadastrar(cliente);
 
