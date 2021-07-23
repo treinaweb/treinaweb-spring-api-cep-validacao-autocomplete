@@ -19,4 +19,10 @@ public class CepServico {
         return response;
     }
 
+    public boolean validar(String cep) {
+        WebmaniaResponse response = consultar(cep);
+
+        return response.getCep() != null;
+    }
+
 }
